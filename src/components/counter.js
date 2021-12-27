@@ -3,35 +3,49 @@ import { Button } from "react-bootstrap";
 
 class Counter extends React.Component {
   //step1: create dynamic data == create the state object(this.state )
-  //step2: state management: we decide how our state is going to change 
-x=10
-name='salim'
+  //step2: state management: we decide how our state is going to change
+  //step3: link the function to an event: (onClick)
+  x = 10;
+  name = "salim";
 
   constructor(props) {
     super(props);
     this.state = {
       counter: 0,
-      name:null
+      name: null,
     };
   }
 
-  incrementHandler=()=>{
+  incrementHandler = () => {
+    this.setState({
+      counter: this.state.counter + 1, // the updated counter= the current counter +1
+    });
+  };
+
+  decrementHandler = () => {
+    this.state.counter > 0 &&
       this.setState({
-          counter: this.state.counter +1 // the updated counter= the current counter +1 
-      })
-  }
+        counter: this.state.counter - 1,
+      });
+  };
 
   render() {
     return (
-
       <div>
-          {console.log(this.state.counter)}
+        {console.log(this.state.counter)}
         <Button variant="danger">Show</Button>
-        <div>
-          <Button variant="success" onClick={this.incrementHandler} >+</Button>
-          <Button variant="primary">{this.state.counter}</Button>
-          <Button variant="success">-</Button>
+        <div className="conterBtns">
+          <Button variant="success" onClick={this.incrementHandler}>
+            +
+          </Button>
+          <Button variant="primary" className="w-50">
+            {this.state.counter}
+          </Button>
+          <Button variant="success" onClick={this.decrementHandler}>
+            -
+          </Button>
         </div>
+        <Button variant="secondary">Reset</Button>
       </div>
     );
   }
