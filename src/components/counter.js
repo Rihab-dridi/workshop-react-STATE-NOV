@@ -29,23 +29,30 @@ class Counter extends React.Component {
       });
   };
 
+  resetHandler = () => {
+    this.setState({
+      counter: this.state.counter * 0,
+    });
+  };
   render() {
     return (
       <div>
         {console.log(this.state.counter)}
-        <Button variant="danger">Show</Button>
+ 
         <div className="conterBtns">
           <Button variant="success" onClick={this.incrementHandler}>
             +
           </Button>
-          <Button variant="primary" className="w-50">
+          <Button variant="primary" className="w-25">
             {this.state.counter}
           </Button>
           <Button variant="success" onClick={this.decrementHandler}>
             -
           </Button>
         </div>
-        <Button variant="secondary">Reset</Button>
+        <Button variant="secondary" onClick={this.resetHandler}>
+          Reset
+        </Button>
       </div>
     );
   }
