@@ -13,6 +13,7 @@ class Counter extends React.Component {
     this.state = {
       counter: 0,
       name: null,
+      timer: 0,
     };
   }
 
@@ -34,11 +35,21 @@ class Counter extends React.Component {
       counter: this.state.counter * 0,
     });
   };
+  componentDidMount() {
+    console.log("a Node for this component has been added to the Dom ");
+  }
+
+  componentDidUpdate() {
+    console.log("this Dom Node has been Updated ");
+  }
+
+  componentWillUnmount() {
+    console.log("this DOM NOde has been removed");
+  }
   render() {
+    console.log("the component is rendering  ");
     return (
       <div>
-        {console.log(this.state.counter)}
- 
         <div className="conterBtns">
           <Button variant="success" onClick={this.incrementHandler}>
             +
